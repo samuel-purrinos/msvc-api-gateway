@@ -11,6 +11,8 @@ spring:
           uri: lb://USER-SERVICE/
           predicates:
             - Path=/api/v1/users/**
+          filters:
+            - AuthFilter
 
         - id: HOTEL-SERVICE
           uri: lb://HOTEL-SERVICE/
@@ -21,6 +23,11 @@ spring:
           uri: lb://REVIEWS-SERVICE/
           predicates:
             - Path=/api/v1/reviews/**
+
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE/
+          predicates:
+            - Path=/api/v1/auth/**
 eureka:
   client:
     service-url:
